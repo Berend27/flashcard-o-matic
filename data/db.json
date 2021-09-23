@@ -9,6 +9,11 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
+    },
+    {
+      "name": "Verbos",
+      "description": "Spanish verbs",
+      "id": "853b6210-1c22-11ec-a20d-a5ae8bc36d05"
     }
   ],
   "cards": [

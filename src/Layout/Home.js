@@ -49,6 +49,9 @@ function Home() {
           <Route path = "/decks/new">
             <CreateDeck />
           </Route>
+          <Route path = "/decks/:deckId">
+            <Deck />
+          </Route>
           <Route>
             <NotFound />
           </Route>
