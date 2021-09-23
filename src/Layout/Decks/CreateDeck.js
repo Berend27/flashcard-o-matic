@@ -4,7 +4,6 @@ import {
     Link,
     useHistory, 
 } from "react-router-dom";
-import { v1 as uuidv1 } from "uuid";
 
 function CreateDeck() {
     const [name, setName] = useState("");
@@ -14,7 +13,7 @@ function CreateDeck() {
         const deck = {};
         deck.name = name;
         deck.description = description;
-        deck.id = uuidv1();
+        deck.id = Math.floor(Math.random() * 10000);
         return deck;
     }
 

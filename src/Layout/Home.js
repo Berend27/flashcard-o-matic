@@ -7,6 +7,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import CreateDeck from "./Decks/CreateDeck";
+import Deck from "./Decks/Deck";
 
 function Home() {
   const history = useHistory();
@@ -23,7 +24,7 @@ function Home() {
             <div class="row">
               <div class="col-2">
                 <button type="button" class="btn btn-secondary" onClick={createDeckClicked}>
-                  Create Deck
+                <i class="fas fa-plus"></i> Create Deck
                 </button>
               </div>
             </div>
@@ -37,10 +38,10 @@ function Home() {
                   <p>Todo: dynamically set this text</p>
                   <div class="d-flex justify-content-between">
                     <div >
-                      <button type="button" class="btn btn-secondary mr-2">View</button>
-                      <button type="button" class="btn btn-primary">Study</button>
+                      <button type="button" class="btn btn-secondary mr-2"><i class="fas fa-eye"></i> View</button>
+                      <button type="button" class="btn btn-primary"><i class="fas fa-book"></i> Study</button>
                     </div>
-                    <button type="button" class="btn btn-danger">T</button>
+                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                   </div>
                 </div>
               </div>
