@@ -5,15 +5,13 @@ import {
     useHistory, 
     useParams 
 } from "react-router-dom";
-import Card from "./Card";
-
-function Deck({ deck = {}}) {
+import CardList from "./CardList";
+// todo: Edit button functionality
+// todo: Study button functionality
+// todo: Add Cards functionality
+function Deck() {
     const [cards, setCards] = useState([]);
-
-    const listStyle = {
-        listStyle: "none",
-        paddingLeft: "0"
-    }
+    const [deck, setDeck] = useState({});
 
     const deckId = useParams().deckId;
 
@@ -22,7 +20,13 @@ function Deck({ deck = {}}) {
             const cardsFromAPI = await listCards(deckId);
             setCards(cardsFromAPI);
         }
+        async function loadDeck() {
+            const deckFromAPI = await readDeck(deckId);
+            setDeck(deckFromAPI);
+        }
+
         loadCards();
+        loadDeck();
     }, [deckId])
 
     return (
@@ -34,8 +38,8 @@ function Deck({ deck = {}}) {
                 </ol>
             </nav>
             <div class="mb-3">
-                <h3>Deck Name</h3>
-                <p>Description</p>
+                <h3>{deck.name}</h3>
+                <p>{deck.description}</p>
                 <div class="d-flex justify-content-between">
                     <div>
                       <button type="button" class="btn btn-secondary mr-2">Edit</button>
@@ -45,12 +49,7 @@ function Deck({ deck = {}}) {
                     <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </div>
             </div>
-            <h2>Cards</h2>
-            <ul style={listStyle}>
-                {cards.map((card, index) => (
-                    <li key={index}><Card card={card} /></li>
-                ))}
-            </ul>
+            <CardList cards={cards} />
         </>
     )
 }
