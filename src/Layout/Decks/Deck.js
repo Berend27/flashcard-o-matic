@@ -40,7 +40,7 @@ function Deck({ deck = {}}) {
                     <div>
                       <button type="button" class="btn btn-secondary mr-2">Edit</button>
                       <button type="button" class="btn btn-primary mr-2">Study</button>
-                      <button type="button" class="btn btn-primary mr-2"><i class="fa-solid fa-plus"></i> Add Cards</button>
+                      <button type="button" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Add Cards</button>
                     </div>
                     <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </div>
