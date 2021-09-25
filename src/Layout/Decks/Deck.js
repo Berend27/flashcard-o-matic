@@ -37,9 +37,9 @@ function Deck() {
     return (
         <>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li class="breadcrumb-item active" aria-current="page">{deck.name}</li>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
                 </ol>
             </nav>
             <div class="mb-3">
@@ -47,11 +47,11 @@ function Deck() {
                 <p>{deck.description}</p>
                 <div class="d-flex justify-content-between">
                     <div>
-                      <button type="button" class="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
-                      <button type="button" class="btn btn-primary mr-2">Study</button>
-                      <button type="button" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Add Cards</button>
+                      <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
+                      <button type="button" className="btn btn-primary mr-2">Study</button>
+                      <button type="button" className="btn btn-primary mr-2"><i class="fas fa-plus"></i> Add Cards</button>
                     </div>
-                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
                 </div>
             </div>
             <CardList cards={cards} />
