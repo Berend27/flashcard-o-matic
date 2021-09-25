@@ -9,6 +9,7 @@ import {
 import CreateDeck from "./Decks/CreateDeck";
 import Deck from "./Decks/Deck";
 import DeckOverview from "./DeckOverview";
+import EditDeck from "./Decks/EditDeck";
 import { listCards, listDecks } from "../utils/api";
 
 function Home() {
@@ -57,6 +58,9 @@ function Home() {
           </Route>
           <Route path = "/decks/new">
             <CreateDeck />
+          </Route>
+          <Route path = "/decks/:deckId/edit">
+            <EditDeck />
           </Route>
           <Route path = "/decks/:deckId">
             <Deck />

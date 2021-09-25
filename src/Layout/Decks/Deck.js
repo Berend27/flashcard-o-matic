@@ -3,7 +3,8 @@ import { listCards, readDeck } from "../../utils/api";
 import { 
     Link,
     useHistory, 
-    useParams 
+    useParams,
+    useRouteMatch, 
 } from "react-router-dom";
 import CardList from "./CardList";
 // todo: Edit button functionality
@@ -14,6 +15,10 @@ function Deck() {
     const [deck, setDeck] = useState({});
 
     const deckId = useParams().deckId;
+    const history = useHistory();
+    const { url } = useRouteMatch();
+
+    const handleEdit = () => history.push(`${url}/edit`);
 
     useEffect(() => {
         async function loadCards() {
@@ -42,7 +47,7 @@ function Deck() {
                 <p>{deck.description}</p>
                 <div class="d-flex justify-content-between">
                     <div>
-                      <button type="button" class="btn btn-secondary mr-2">Edit</button>
+                      <button type="button" class="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
                       <button type="button" class="btn btn-primary mr-2">Study</button>
                       <button type="button" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Add Cards</button>
                     </div>
