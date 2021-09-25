@@ -11,10 +11,10 @@ function DeckForm({ deck, setDeck, handleCancel, handleSubmit}) {
     
     return (
         <form onSubmit={handleSubmit}>
-            <div class="form-group">
-                <label for="name">Name</label>
+            <div className="form-group">
+                <label for="name">Name</label>  {/* todo: warning: for instead of htmlFor */}
                 <input 
-                    class="form-control"
+                    className="form-control"
                     id="name"
                     type="text"
                     name="name"
@@ -24,10 +24,10 @@ function DeckForm({ deck, setDeck, handleCancel, handleSubmit}) {
                     value={deck.name}
                 />
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label for="description">Description</label>
                 <textarea
-                    class="form-control"
+                    className="form-control"
                     id="description"
                     name="description"
                     onChange={handleChange}
@@ -37,8 +37,8 @@ function DeckForm({ deck, setDeck, handleCancel, handleSubmit}) {
                     value={deck.description}
                 />
             </div>
-            <button type="button" class="btn btn-secondary mr-2" onClick={handleCancel}>Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-secondary mr-2" onClick={handleCancel}>Cancel</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );
 }

@@ -42,14 +42,14 @@ function Deck() {
                     <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
                 </ol>
             </nav>
-            <div class="mb-3">
+            <div className="mb-3">
                 <h3>{deck.name}</h3>
                 <p>{deck.description}</p>
-                <div class="d-flex justify-content-between">
+                <div className="d-flex justify-content-between">
                     <div>
                       <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
                       <button type="button" className="btn btn-primary mr-2">Study</button>
-                      <button type="button" className="btn btn-primary mr-2"><i class="fas fa-plus"></i> Add Cards</button>
+                      <button type="button" className="btn btn-primary mr-2"><i className="fas fa-plus"></i> Add Cards</button>
                     </div>
                     <button type="button" className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
                 </div>
