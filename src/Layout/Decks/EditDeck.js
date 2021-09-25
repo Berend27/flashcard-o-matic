@@ -8,27 +8,25 @@ import {
     readDeck,
     updateDeck, 
 } from "../../utils/api";
+import DeckForm from "./DeckForm";
 
-function EditDeck() {
+function EditDeck({ setDeckUpdated }) {
     const [deck, setDeck] = useState({});
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("")
 
     const deckId = useParams().deckId;
     const history = useHistory();
     const previous = `/decks/${deckId}`;
 
     const handleCancel = () => history.goBack();
-    const handleNameChange = (event) => setName(event.target.value);
-    const handleDescriptionChange = (event) => setDescription(event.target.value);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        deck.name = name;
-        deck.description = description;
         await updateDeck(deck);
+        setDeckUpdated(true);
         history.goBack();
     }
+
+    setDeckUpdated(false);
 
     useEffect(() => {
         async function loadDeck() {
@@ -52,33 +50,12 @@ function EditDeck() {
             <div class="row">
                 <h2 class="ml-3">Edit Deck</h2>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input 
-                        class="form-control"
-                        id="name"
-                        type="text"
-                        name="name"
-                        onChange={handleNameChange}
-                        placeholder="Deck Name"
-                        required
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea
-                        class="form-control"
-                        id="description"
-                        onChange={handleDescriptionChange}
-                        placeholder="Brief description of the deck"
-                        required
-                        rows="3"
-                    />
-                </div>
-                <button type="button" class="btn btn-secondary mr-2" onClick={handleCancel}>Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <DeckForm 
+                deck={deck}
+                setDeck={setDeck}
+                handleCancel={handleCancel}
+                handleSubmit={handleSubmit}
+            />
         </>
     )
 }

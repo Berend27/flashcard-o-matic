@@ -14,6 +14,7 @@ import { listCards, listDecks } from "../utils/api";
 
 function Home() {
   const [decks, setDecks] = useState([]);
+  const [deckUpdated, setDeckUpdated] = useState([false]);
 
   const history = useHistory();
 
@@ -34,7 +35,7 @@ function Home() {
       setDecks(decksFromAPI);
     }
     loadDecks();
-  }, [])
+  }, [deckUpdated])
 
   return (
     <>
@@ -60,7 +61,7 @@ function Home() {
             <CreateDeck />
           </Route>
           <Route path = "/decks/:deckId/edit">
-            <EditDeck />
+            <EditDeck setDeckUpdated={setDeckUpdated} />
           </Route>
           <Route path = "/decks/:deckId">
             <Deck />
