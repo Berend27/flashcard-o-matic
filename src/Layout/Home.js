@@ -14,7 +14,7 @@ import { listCards, listDecks } from "../utils/api";
 
 function Home() {
   const [decks, setDecks] = useState([]);
-  const [deckUpdated, setDeckUpdated] = useState([false]);
+  const [dataUpdated, setDataUpdated] = useState([false]);
 
   const history = useHistory();
 
@@ -35,19 +35,19 @@ function Home() {
       setDecks(decksFromAPI);
     }
     loadDecks();
-  }, [deckUpdated])
+  }, [dataUpdated])
 
   return (
     <>
       <Header />
       <main className="container">
-      {/* TODO: Implement the screen starting here */}
+      {/* TODO: Study button and Delete button in DeckOverview */}
         <Switch>
           <Route exact={true} path="/">
-            <div class="row">
-              <div class="col-2">
-                <button type="button" class="btn btn-secondary" onClick={createDeckClicked}>
-                  <i class="fas fa-plus"></i> Create Deck
+            <div className="row">
+              <div className="col-2">
+                <button type="button" className="btn btn-secondary" onClick={createDeckClicked}>
+                  <i className="fas fa-plus"></i> Create Deck
                 </button>
               </div>
             </div>
@@ -58,10 +58,10 @@ function Home() {
             </ul>
           </Route>
           <Route path = "/decks/new">
-            <CreateDeck />
+            <CreateDeck setDataUpdated={setDataUpdated} />
           </Route>
           <Route path = "/decks/:deckId/edit">
-            <EditDeck setDeckUpdated={setDeckUpdated} />
+            <EditDeck setDataUpdated={setDataUpdated} />
           </Route>
           <Route path = "/decks/:deckId">
             <Deck />

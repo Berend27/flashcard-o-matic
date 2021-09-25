@@ -10,7 +10,7 @@ import {
 } from "../../utils/api";
 import DeckForm from "./DeckForm";
 
-function EditDeck({ setDeckUpdated }) {
+function EditDeck({ setDataUpdated }) {
     const [deck, setDeck] = useState({});
 
     const deckId = useParams().deckId;
@@ -22,11 +22,11 @@ function EditDeck({ setDeckUpdated }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await updateDeck(deck);
-        setDeckUpdated(true);
+        setDataUpdated(true);
         history.goBack();
     }
 
-    setDeckUpdated(false);
+    setDataUpdated(false);
 
     useEffect(() => {
         async function loadDeck() {
@@ -35,8 +35,6 @@ function EditDeck({ setDeckUpdated }) {
         }
         loadDeck();
     }, [deckId])
-
-    // todo: prefill the fields with what the existing data
 
     return (
         <>

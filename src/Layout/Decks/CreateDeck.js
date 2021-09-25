@@ -4,34 +4,30 @@ import {
     Link,
     useHistory, 
 } from "react-router-dom";
+import DeckForm from "./DeckForm";
 
-function CreateDeck() {
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
+function CreateDeck({ setDataUpdated }) {
+    const initialFormState = {
+        name: "",
+        description: "",
+    };
 
-    const create = () => {
-        const deck = {};
-        deck.name = name;
-        deck.description = description;
-        deck.id = Math.floor(Math.random() * 10000);
-        return deck;
-    }
+    const [deck, setDeck] = useState({ ...initialFormState });
 
     const history = useHistory();
 
-    const handleNameChange = (event) => setName(event.target.value);
-    const handleDescriptionChange = (event) => setDescription(event.target.value);
-
     const handleCancel = () => history.push("/");
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const deck = create();
-        createDeck(deck);
-        setName("");
-        setDescription("");
+        deck.id = Math.floor(Math.random() * 10000);
+        console.log(deck);
+        await createDeck(deck);
+        setDataUpdated(true);
         history.push(`/decks/${deck.id}`);
     }
+
+    setDataUpdated(false);
 
     return (
         <>
@@ -44,33 +40,12 @@ function CreateDeck() {
             <div class="row">
                 <h2 class="ml-3">Create Deck</h2>
             </div>
-            <form onSubmit={handleSubmit}>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input 
-                        class="form-control"
-                        id="name"
-                        type="text"
-                        name="name"
-                        onChange={handleNameChange}
-                        placeholder="Deck Name"
-                        required
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea
-                        class="form-control"
-                        id="description"
-                        onChange={handleDescriptionChange}
-                        placeholder="Brief description of the deck"
-                        required
-                        rows="3"
-                    />
-                </div>
-                <button type="button" class="btn btn-secondary mr-2" onClick={handleCancel}>Cancel</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <DeckForm 
+                deck={deck}
+                setDeck={setDeck}
+                handleCancel={handleCancel}
+                handleSubmit={handleSubmit}
+            />
         </>
     )
 }

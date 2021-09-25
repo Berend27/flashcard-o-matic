@@ -8,6 +8,7 @@ function DeckOverview({ deck }) {
 
     const handleView = () => history.push(`/decks/${deck.id}`);
     // todo: handleStudy
+    // todo: handleDelete
 
     return (
         <div class="row">
