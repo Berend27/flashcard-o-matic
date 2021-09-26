@@ -19,13 +19,21 @@ function DeckOverview({ deck, handleDelete }) {
             <div className="card-body">
                 <p>{deck.description}</p>
                 <div className="d-flex justify-content-between">
-                <div >
-                    <button type="button" className="btn btn-secondary mr-2" onClick={handleView}>
-                        <i className="fas fa-eye"></i> View
+                    <div >
+                        <button type="button" className="btn btn-secondary mr-2" onClick={handleView}>
+                            <i className="fas fa-eye"></i> View
+                        </button>
+                        <button type="button" className="btn btn-primary"><i className="fas fa-book"></i> Study</button>
+                    </div>
+                    <button 
+                        type="button" 
+                        className="btn btn-danger" 
+                        onClick={(event) => {
+                            handleDelete(deck.id)
+                            event.currentTarget.blur();
+                        }}>
+                        <i className="far fa-trash-alt"></i>
                     </button>
-                    <button type="button" className="btn btn-primary"><i className="fas fa-book"></i> Study</button>
-                </div>
-                <button type="button" className="btn btn-danger" onClick={() => handleDelete(deck.id)}><i className="far fa-trash-alt"></i></button>
                 </div>
             </div>
             </div>

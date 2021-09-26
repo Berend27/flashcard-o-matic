@@ -38,7 +38,7 @@ function Deck({ deleteDeckClicked }) {
 
         loadCards();
         loadDeck();
-    }, [deckId])
+    }, [deckId, history])
 
     return (
         <>
@@ -60,8 +60,9 @@ function Deck({ deleteDeckClicked }) {
                     <button 
                         type="button" 
                         className="btn btn-danger" 
-                        onClick={() => {
+                        onClick={(event) => {
                                 deleteDeckClicked(deckId);
+                                event.currentTarget.blur();
                             }
                         }>
                             <i className="far fa-trash-alt"></i>
