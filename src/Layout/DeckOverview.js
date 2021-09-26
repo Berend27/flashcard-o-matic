@@ -3,12 +3,11 @@ import {
     useHistory,
 } from "react-router-dom";
 
-function DeckOverview({ deck }) {
+function DeckOverview({ deck, handleDelete }) {
     const history = useHistory();
 
     const handleView = () => history.push(`/decks/${deck.id}`);
     // todo: handleStudy
-    // todo: handleDelete
 
     return (
         <div className="row">
@@ -26,7 +25,7 @@ function DeckOverview({ deck }) {
                     </button>
                     <button type="button" className="btn btn-primary"><i className="fas fa-book"></i> Study</button>
                 </div>
-                <button type="button" className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
+                <button type="button" className="btn btn-danger" onClick={() => handleDelete(deck.id)}><i className="far fa-trash-alt"></i></button>
                 </div>
             </div>
             </div>

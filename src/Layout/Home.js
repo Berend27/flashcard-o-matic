@@ -10,7 +10,7 @@ import CreateDeck from "./Decks/CreateDeck";
 import Deck from "./Decks/Deck";
 import DeckOverview from "./DeckOverview";
 import EditDeck from "./Decks/EditDeck";
-import { listCards, listDecks } from "../utils/api";
+import { deleteDeck, listCards, listDecks } from "../utils/api";
 
 function Home() {
   const [decks, setDecks] = useState([]);
@@ -19,11 +19,19 @@ function Home() {
   const history = useHistory();
 
   const createDeckClicked = () => history.push("/decks/new");
+  const deleteDeckClicked = async (id) => {
+    if (window.confirm("Delete this deck?\nYou will not be able to recover it.")) {
+      await deleteDeck(id);
+      refreshHome();
+    }
+  }
 
   const listStyle = {
     listStyle: "none",
     paddingLeft: "0"
 }
+
+const refreshHome = () => history.go(0);
 
   useEffect(() => {
     async function loadDecks() {
@@ -41,7 +49,7 @@ function Home() {
     <>
       <Header />
       <main className="container">
-      {/* TODO: Study button and Delete button in DeckOverview */}
+      {/* TODO: Study button in DeckOverview */}
         <Switch>
           <Route exact={true} path="/">
             <div className="row">
@@ -53,7 +61,7 @@ function Home() {
             </div>
             <ul style={listStyle}>
               {decks.map((deck, index) => (
-                <li key={index}><DeckOverview deck={deck} /></li>
+                <li key={index}><DeckOverview deck={deck} handleDelete={deleteDeckClicked}/></li>
               ))}
             </ul>
           </Route>
@@ -64,7 +72,7 @@ function Home() {
             <EditDeck setDataUpdated={setDataUpdated} />
           </Route>
           <Route path = "/decks/:deckId">
-            <Deck />
+            <Deck deleteDeckClicked={deleteDeckClicked} />
           </Route>
           <Route>
             <NotFound />

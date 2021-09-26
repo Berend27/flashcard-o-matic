@@ -10,7 +10,8 @@ import CardList from "./CardList";
 // todo: Edit button functionality
 // todo: Study button functionality
 // todo: Add Cards functionality
-function Deck() {
+
+function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
     const [deck, setDeck] = useState({});
 
@@ -26,8 +27,13 @@ function Deck() {
             setCards(cardsFromAPI);
         }
         async function loadDeck() {
-            const deckFromAPI = await readDeck(deckId);
-            setDeck(deckFromAPI);
+            try {
+                const deckFromAPI = await readDeck(deckId);
+                setDeck(deckFromAPI);
+            } catch {
+                console.log("deck not found");
+                history.push("/");
+            }
         }
 
         loadCards();
@@ -51,7 +57,15 @@ function Deck() {
                       <button type="button" className="btn btn-primary mr-2">Study</button>
                       <button type="button" className="btn btn-primary mr-2"><i className="fas fa-plus"></i> Add Cards</button>
                     </div>
-                    <button type="button" className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
+                    <button 
+                        type="button" 
+                        className="btn btn-danger" 
+                        onClick={() => {
+                                deleteDeckClicked(deckId);
+                            }
+                        }>
+                            <i className="far fa-trash-alt"></i>
+                    </button>
                 </div>
             </div>
             <CardList cards={cards} />
