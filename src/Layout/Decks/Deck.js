@@ -12,7 +12,6 @@ import CardList from "./CardList";
 import AddCard from "./Cards/AddCard";
 // todo: Study button functionality
 // todo: Add Cards functionality 
-// todo: make the button navigate to /decks/:deckId/cards/new - do this first
 
 function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
