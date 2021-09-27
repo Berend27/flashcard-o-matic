@@ -11,7 +11,6 @@ import {
 import CardList from "./CardList";
 import AddCard from "./Cards/AddCard";
 // todo: Study button functionality
-// todo: Add Cards functionality 
 
 function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
