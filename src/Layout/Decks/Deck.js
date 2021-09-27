@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { listCards, readDeck } from "../../utils/api";
 import { 
     Link,
+    Route,
+    Switch,
     useHistory, 
     useParams,
     useRouteMatch, 
 } from "react-router-dom";
 import CardList from "./CardList";
-// todo: Edit button functionality
+import AddCard from "./Cards/AddCard";
 // todo: Study button functionality
-// todo: Add Cards functionality
+// todo: Add Cards functionality 
+// todo: make the button navigate to /decks/:deckId/cards/new - do this first
 
 function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
@@ -19,6 +22,7 @@ function Deck({ deleteDeckClicked }) {
     const history = useHistory();
     const { url } = useRouteMatch();
 
+    const handleAddCards = () => history.push(`${url}/cards/new`);
     const handleEdit = () => history.push(`${url}/edit`);
 
     useEffect(() => {
@@ -41,36 +45,44 @@ function Deck({ deleteDeckClicked }) {
     }, [deckId, history])
 
     return (
-        <>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
-                </ol>
-            </nav>
-            <div className="mb-3">
-                <h3>{deck.name}</h3>
-                <p>{deck.description}</p>
-                <div className="d-flex justify-content-between">
-                    <div>
-                      <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
-                      <button type="button" className="btn btn-primary mr-2">Study</button>
-                      <button type="button" className="btn btn-primary mr-2"><i className="fas fa-plus"></i> Add Cards</button>
+        <Switch>
+            <Route path="/decks/:deckId/cards/new">
+                <AddCard deck={deck} />
+            </Route>
+            <Route>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
+                    </ol>
+                </nav>
+                <div className="mb-3">
+                    <h3>{deck.name}</h3>
+                    <p>{deck.description}</p>
+                    <div className="d-flex justify-content-between">
+                        <div>
+                        <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
+                        <button type="button" className="btn btn-primary mr-2">Study</button>
+                        <button type="button" className="btn btn-primary mr-2" onClick={handleAddCards}>
+                            <i className="fas fa-plus"></i>
+                            Add Cards
+                        </button>
+                        </div>
+                        <button 
+                            type="button" 
+                            className="btn btn-danger" 
+                            onClick={(event) => {
+                                    deleteDeckClicked(deckId);
+                                    event.currentTarget.blur();
+                                }
+                            }>
+                                <i className="far fa-trash-alt"></i>
+                        </button>
                     </div>
-                    <button 
-                        type="button" 
-                        className="btn btn-danger" 
-                        onClick={(event) => {
-                                deleteDeckClicked(deckId);
-                                event.currentTarget.blur();
-                            }
-                        }>
-                            <i className="far fa-trash-alt"></i>
-                    </button>
                 </div>
-            </div>
-            <CardList cards={cards} />
-        </>
+                <CardList cards={cards} />
+            </Route>
+        </Switch>
     )
 }
 

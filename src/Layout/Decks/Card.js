@@ -1,5 +1,5 @@
 import React from "react";
-
+// todo: Edit button functionality
 function Card({ card }) {
     if (card) {
         return (

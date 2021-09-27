@@ -11,7 +11,7 @@ import Deck from "./Decks/Deck";
 import DeckOverview from "./DeckOverview";
 import EditDeck from "./Decks/EditDeck";
 import { deleteDeck, listCards, listDecks } from "../utils/api";
-
+// todo: this doesn't handle sub 750 px screen widths well
 function Home() {
   const [decks, setDecks] = useState([]);
   const [dataUpdated, setDataUpdated] = useState([false]);
