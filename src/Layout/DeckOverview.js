@@ -6,6 +6,7 @@ import {
 function DeckOverview({ deck, handleDelete }) {
     const history = useHistory();
 
+    const handleStudy = () => history.push(`/decks/${deck.id}/study`)
     const handleView = () => history.push(`/decks/${deck.id}`);
     // todo: handleStudy
 
@@ -23,7 +24,7 @@ function DeckOverview({ deck, handleDelete }) {
                         <button type="button" className="btn btn-secondary mr-2" onClick={handleView}>
                             <i className="fas fa-eye"></i> View
                         </button>
-                        <button type="button" className="btn btn-primary"><i className="fas fa-book"></i> Study</button>
+                        <button type="button" className="btn btn-primary" onClick={handleStudy}><i className="fas fa-book"></i> Study</button>
                     </div>
                     <button 
                         type="button" 

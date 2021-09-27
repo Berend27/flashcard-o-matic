@@ -32,8 +32,9 @@ function Deck({ deleteDeckClicked }) {
             try {
                 const deckFromAPI = await readDeck(deckId);
                 setDeck(deckFromAPI);
-            } catch {
+            } catch (error) {
                 console.log("deck not found");
+                console.log(error);
                 history.push("/");
             }
         }

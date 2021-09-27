@@ -10,6 +10,7 @@ import CreateDeck from "./Decks/CreateDeck";
 import Deck from "./Decks/Deck";
 import DeckOverview from "./DeckOverview";
 import EditDeck from "./Decks/EditDeck";
+import Study from "./Decks/Study/Study";
 import { deleteDeck, listCards, listDecks } from "../utils/api";
 // todo: this doesn't handle sub 750 px screen widths well
 function Home() {
@@ -70,6 +71,9 @@ const refreshHome = () => history.go(0);
           </Route>
           <Route path = "/decks/:deckId/edit">
             <EditDeck setDataUpdated={setDataUpdated} />
+          </Route>
+          <Route path = "/decks/:deckId/study">
+            <Study />
           </Route>
           <Route path = "/decks/:deckId">
             <Deck deleteDeckClicked={deleteDeckClicked} />

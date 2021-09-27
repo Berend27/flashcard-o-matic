@@ -39,7 +39,7 @@ function AddCard({ deck }) {
     }
 
     return (
-        <>
+        <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -78,7 +78,7 @@ function AddCard({ deck }) {
                 <button type="button" className="btn btn-secondary mr-2" onClick={handleDone}>Done</button>
                 <button type="submit" className="btn btn-primary">Save</button>
             </form>
-        </>
+        </div>
     );
 }
 
