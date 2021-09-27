@@ -8,6 +8,7 @@ import {
     readDeck,
     updateDeck, 
 } from "../../utils/api";
+import BreadcrumbBar from "../BreadcrumbBar";
 import DeckForm from "./DeckForm";
 
 function EditDeck({ setDataUpdated }) {
@@ -15,6 +16,11 @@ function EditDeck({ setDataUpdated }) {
 
     const deckId = useParams().deckId;
     const history = useHistory();
+    const navLinks = [
+        {text: "Home", url: "/"},
+        {text: deck.name, url: `/decks/${deck.id}`},
+    ]
+    const pageName = "Edit Deck";
     const previous = `/decks/${deckId}`;
 
     const handleCancel = () => history.goBack();
@@ -38,15 +44,9 @@ function EditDeck({ setDataUpdated }) {
 
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to={previous}>{deck.name}</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Edit Deck</li>
-                </ol>
-            </nav>
+            <BreadcrumbBar links={navLinks} currentPage={pageName} />
             <div className="row">
-                <h2 className="ml-3">Edit Deck</h2>
+                <h2 className="ml-3">{pageName}</h2>
             </div>
             <DeckForm 
                 deck={deck}

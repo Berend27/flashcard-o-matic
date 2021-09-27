@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import CardList from "./CardList";
 import AddCard from "./Cards/AddCard";
+import BreadcrumbBar from "../BreadcrumbBar";
 // todo: Study button functionality
 
 function Deck({ deleteDeckClicked }) {
@@ -19,6 +20,10 @@ function Deck({ deleteDeckClicked }) {
     const deckId = useParams().deckId;
     const history = useHistory();
     const { url } = useRouteMatch();
+
+    const navLinks = [
+        {text: "Home", url: "/"},
+    ]
 
     const handleAddCards = () => history.push(`${url}/cards/new`);
     const handleEdit = () => history.push(`${url}/edit`);
@@ -49,12 +54,7 @@ function Deck({ deleteDeckClicked }) {
                 <AddCard deck={deck} />
             </Route>
             <Route>
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li className="breadcrumb-item active" aria-current="page">{deck.name}</li>
-                    </ol>
-                </nav>
+                <BreadcrumbBar links={navLinks} currentPage={deck.name} />
                 <div className="mb-3">
                     <h3>{deck.name}</h3>
                     <p>{deck.description}</p>

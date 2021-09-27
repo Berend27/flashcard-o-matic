@@ -5,10 +5,15 @@ import {
     useParams, 
 } from "react-router-dom";
 import { createCard } from "../../../utils/api";
+import BreadcrumbBar from "../../BreadcrumbBar";
 function AddCard({ deck }) {
     const deckId = deck.id 
     const history = useHistory();
-    const previous = `/decks/${deckId}`;
+    const navLinks = [
+        {text: "Home", url: "/"},
+        {text: deck.name, url: `/decks/${deck.id}`},
+    ]
+    const PAGE_NAME = "Add Card";
 
     const initialFormState = {
         front: "",
@@ -40,15 +45,9 @@ function AddCard({ deck }) {
 
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to={previous}>{deck.name}</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Add Card</li>
-                </ol>
-            </nav>
+            <BreadcrumbBar links={navLinks} currentPage={PAGE_NAME} />
             <div className="row">
-                <h2 className="ml-3">{deck.name}: Add Card</h2>
+                <h2 className="ml-3">{deck.name}: {PAGE_NAME}</h2>
             </div>
             <form onSubmit={handleSave}>
                 <div className="form-group">

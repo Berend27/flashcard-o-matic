@@ -4,6 +4,7 @@ import {
     Link,
     useHistory, 
 } from "react-router-dom";
+import BreadcrumbBar from "../BreadcrumbBar";
 import DeckForm from "./DeckForm";
 
 function CreateDeck({ setDataUpdated }) {
@@ -11,6 +12,10 @@ function CreateDeck({ setDataUpdated }) {
         name: "",
         description: "",
     };
+
+    const navLinks = [
+        {text: "Home", url: "/"},
+    ]
 
     const [deck, setDeck] = useState({ ...initialFormState });
 
@@ -31,12 +36,7 @@ function CreateDeck({ setDataUpdated }) {
 
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Create Deck</li>
-                </ol>
-            </nav>
+            <BreadcrumbBar links={navLinks} currentPage="Create Deck" />
             <div className="row">
                 <h2 className="ml-3">Create Deck</h2>
             </div>
