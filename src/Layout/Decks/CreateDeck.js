@@ -30,7 +30,7 @@ function CreateDeck({ setDataUpdated }) {
     setDataUpdated(false);
 
     return (
-        <>
+        <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
@@ -46,7 +46,7 @@ function CreateDeck({ setDataUpdated }) {
                 handleCancel={handleCancel}
                 handleSubmit={handleSubmit}
             />
-        </>
+        </div>
     )
 }
 

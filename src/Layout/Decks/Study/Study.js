@@ -22,9 +22,9 @@ function Study() {
     ]
 
     return (
-        <>
+        <div>
             <BreadcrumbBar links={navLinks} currentPage="Study" />
-        </>
+        </div>
     )
 }
 

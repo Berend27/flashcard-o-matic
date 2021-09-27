@@ -47,7 +47,7 @@ const refreshHome = () => history.go(0);
   }, [dataUpdated])
 
   return (
-    <>
+    <div>
       <Header />
       <main className="container">
       {/* TODO: Study button in DeckOverview */}
@@ -83,7 +83,7 @@ const refreshHome = () => history.go(0);
           </Route>
         </Switch>
       </main>
-    </>
+    </div>
   );
 }
 

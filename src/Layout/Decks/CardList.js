@@ -8,14 +8,14 @@ function CardList({cards}) {
     }
 
     return (
-        <>
+        <div>
             <h2>Cards</h2>
             <ul style={listStyle}>
                 {cards.map((card, index) => (
                     <li key={index}><Card card={card} /></li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }
 
