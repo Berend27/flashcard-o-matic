@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { listCards, readDeck } from "../../utils/api";
 import { 
-    Link,
     Route,
     Switch,
     useHistory, 
@@ -11,7 +10,6 @@ import {
 import ButterflyCardList from "./ButterflyCardList";
 import AddCard from "./Cards/AddCard";
 import BreadcrumbBar from "../BreadcrumbBar";
-// todo: Study button functionality
 
 function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
