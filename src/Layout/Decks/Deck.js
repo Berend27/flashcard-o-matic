@@ -27,6 +27,7 @@ function Deck({ deleteDeckClicked }) {
 
     const handleAddCards = () => history.push(`${url}/cards/new`);
     const handleEdit = () => history.push(`${url}/edit`);
+    const handleStudy = () => history.push(`${url}/study`)
 
     useEffect(() => {
         async function loadCards() {
@@ -61,7 +62,7 @@ function Deck({ deleteDeckClicked }) {
                     <div className="d-flex justify-content-between">
                         <div>
                         <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
-                        <button type="button" className="btn btn-primary mr-2">Study</button>
+                        <button type="button" className="btn btn-primary mr-2" onClick={handleStudy}>Study</button>
                         <button type="button" className="btn btn-primary mr-2" onClick={handleAddCards}>
                             <i className="fas fa-plus"></i>
                             Add Cards
