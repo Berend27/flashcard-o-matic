@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "./Card";
+import ButterflyCard from "./ButterflyCard";
 
-function CardList({cards}) {
+function ButterflyCardList({cards}) {
     const listStyle = {
         listStyle: "none",
         paddingLeft: "0"
@@ -12,11 +12,11 @@ function CardList({cards}) {
             <h2>Cards</h2>
             <ul style={listStyle}>
                 {cards.map((card, index) => (
-                    <li key={index}><Card card={card} /></li>
+                    <li key={index}><ButterflyCard card={card} /></li>
                 ))}
             </ul>
         </div>
     );
 }
 
-export default CardList;
+export default ButterflyCardList;

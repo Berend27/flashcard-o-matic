@@ -1,6 +1,6 @@
 import React from "react";
 // todo: Edit button functionality
-function Card({ card }) {
+function ButterflyCard({ card }) {
     if (card) {
         return (
             <div className="card row ml-0 mr-0">
@@ -25,4 +25,4 @@ function Card({ card }) {
     
 }
 
-export default Card;
+export default ButterflyCard;

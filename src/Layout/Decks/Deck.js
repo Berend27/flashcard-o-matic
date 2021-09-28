@@ -8,7 +8,7 @@ import {
     useParams,
     useRouteMatch, 
 } from "react-router-dom";
-import CardList from "./CardList";
+import ButterflyCardList from "./ButterflyCardList";
 import AddCard from "./Cards/AddCard";
 import BreadcrumbBar from "../BreadcrumbBar";
 // todo: Study button functionality
@@ -79,7 +79,7 @@ function Deck({ deleteDeckClicked }) {
                         </button>
                     </div>
                 </div>
-                <CardList cards={cards} />
+                <ButterflyCardList cards={cards} />
             </Route>
         </Switch>
     )

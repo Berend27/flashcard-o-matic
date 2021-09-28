@@ -50,7 +50,6 @@ const refreshHome = () => history.go(0);
     <div>
       <Header />
       <main className="container">
-      {/* TODO: Study button in DeckOverview */}
         <Switch>
           <Route exact={true} path="/">
             <div className="row">

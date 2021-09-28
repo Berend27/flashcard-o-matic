@@ -6,6 +6,7 @@ import BreadcrumbBar from "../../BreadcrumbBar";
 function Study() {
     const [deck, setDeck] = useState({name: "", id: 0});
     const { deckId } = useParams();
+    const PAGE_NAME = "Study";
 
     useEffect(() => {
         async function loadDeck() {
@@ -23,7 +24,8 @@ function Study() {
 
     return (
         <div>
-            <BreadcrumbBar links={navLinks} currentPage="Study" />
+            <BreadcrumbBar links={navLinks} currentPage={PAGE_NAME} />
+            <h2>{PAGE_NAME}: {deck.name}</h2>
         </div>
     )
 }
