@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { listCards, readDeck } from "../../../utils/api";
 import BreadcrumbBar from "../../BreadcrumbBar";
 import Card from "./Card";
@@ -8,8 +8,15 @@ function Study() {
     const [cards, setCards] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [deck, setDeck] = useState({name: "", id: 0});
+    const [finished, setFinished] = useState(false);
     const { deckId } = useParams();
+    const history = useHistory();
     const PAGE_NAME = "Study";
+
+    function restart() {
+        setCurrentIndex(0);
+        setFinished(false);
+    }
 
     useEffect(() => {
         async function loadCards() {
@@ -22,9 +29,19 @@ function Study() {
         }
         loadCards();
         loadDeck();
-    }, [deckId])
+    }, [deckId]);
 
-    // todo: use readDeck() more?
+    useEffect(() => {
+        if (finished) {
+            // show modal
+            if (window.confirm("Restart cards?")) {
+                restart();
+            } else {
+                history.push("/");
+            }
+        }
+    }, [finished]);
+
     const navLinks = [
         {text: "Home", url: "/"},
         {text: deck.name, url: `/decks/${deck.id}`},
@@ -39,6 +56,7 @@ function Study() {
                     card={cards[currentIndex]} 
                     currentIndex={currentIndex} 
                     setCurrentIndex={setCurrentIndex} 
+                    setFinished={setFinished}
                     total={cards.length} 
                 />
             </div>

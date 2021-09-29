@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Card({ card, currentIndex, setCurrentIndex, total }) {
+function Card({ card, currentIndex, setCurrentIndex, setFinished, total }) {
     const [showFront, setShowFront] = useState(true);
     
     const flip = () => {
@@ -13,6 +13,7 @@ function Card({ card, currentIndex, setCurrentIndex, total }) {
         } else {
             // todo: show prompt to either restart the cards or return to the home page
             console.log("show the restart or return to the homepage modal");
+            setFinished(true);
         }
     }
 
