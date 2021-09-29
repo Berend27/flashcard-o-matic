@@ -13,6 +13,8 @@ function Study() {
     const history = useHistory();
     const PAGE_NAME = "Study";
 
+    const goToAddCards = () => history.push(`/decks/${deckId}/cards/new`)
+
     function restart() {
         setCurrentIndex(0);
         setFinished(false);
@@ -47,7 +49,7 @@ function Study() {
         {text: deck.name, url: `/decks/${deck.id}`},
     ]
 
-    if (cards.length > 0) {
+    if (cards.length > 2) {
         return (
             <div>
                 <BreadcrumbBar links={navLinks} currentPage={PAGE_NAME} />
@@ -66,6 +68,11 @@ function Study() {
             <div>
                 <BreadcrumbBar links={navLinks} currentPage={PAGE_NAME} />
                 <h2>{PAGE_NAME}: {deck.name}</h2>
+                <h3>Not enough cards.</h3>
+                <p>You need at least 3 cards to study. There are {cards.length} cards in this deck.</p>
+                <button type="button" className="btn btn-primary" onClick={goToAddCards}>
+                    <i className="fas fa-plus"></i> Add Cards
+                </button>
             </div>
         );
     }
