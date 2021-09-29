@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listCards, readDeck } from "../../utils/api";
+import { deleteCard, listCards, readDeck } from "../../utils/api";
 import { 
     Route,
     Switch,
@@ -24,6 +24,12 @@ function Deck({ deleteDeckClicked }) {
     ]
 
     const handleAddCards = () => history.push(`${url}/cards/new`);
+    const handleDeleteCard = async (card) => {
+        if (window.confirm("Delete this card?")) {
+            await deleteCard(card.id);
+            history.go(0);
+        } 
+    }
     const handleEdit = () => history.push(`${url}/edit`);
     const handleStudy = () => history.push(`${url}/study`)
 
@@ -77,7 +83,7 @@ function Deck({ deleteDeckClicked }) {
                         </button>
                     </div>
                 </div>
-                <ButterflyCardList cards={cards} />
+                <ButterflyCardList cards={cards} handleDeleteCard={handleDeleteCard} />
             </Route>
         </Switch>
     )
