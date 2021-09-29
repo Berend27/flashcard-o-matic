@@ -62,8 +62,7 @@ function Deck({ deleteDeckClicked }) {
                         <button type="button" className="btn btn-secondary mr-2" onClick={handleEdit}>Edit</button>
                         <button type="button" className="btn btn-primary mr-2" onClick={handleStudy}>Study</button>
                         <button type="button" className="btn btn-primary mr-2" onClick={handleAddCards}>
-                            <i className="fas fa-plus"></i>
-                            Add Cards
+                            <i className="fas fa-plus"></i> Add Cards
                         </button>
                         </div>
                         <button 
