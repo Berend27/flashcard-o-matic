@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     useHistory,
 } from "react-router-dom";
 
-function DeckOverview({ deck, handleDelete }) {
+function DeckOverview({ count, deck, handleDelete }) {
     const history = useHistory();
 
     const handleStudy = () => history.push(`/decks/${deck.id}/study`)
@@ -11,11 +11,11 @@ function DeckOverview({ deck, handleDelete }) {
 
     return (
         <div className="row">
-            <div className="card col-6 m-3 pl-0 pr-0">
+            <div className="card col-7 m-3 pl-0 pr-0">
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <h3>{deck.name}</h3>
-                    <p>{deck.count} cards</p>
+                    <p>{count} cards</p>
                 </div>
                 <p>{deck.description}</p>
                 <div className="d-flex justify-content-between">

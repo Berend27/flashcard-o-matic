@@ -39,8 +39,14 @@ function Deck({ deleteDeckClicked }) {
 
     useEffect(() => {
         async function loadCards() {
-            const cardsFromAPI = await listCards(deckId);
-            setCards(cardsFromAPI);
+            try {
+                console.log("cardsFromAPI")
+                const cardsFromAPI = await listCards(deckId);
+                setCards(cardsFromAPI);
+                console.log(cardsFromAPI);
+            } catch (error) {
+                console.log(error);
+            }
         }
         async function loadDeck() {
             try {
@@ -49,12 +55,12 @@ function Deck({ deleteDeckClicked }) {
             } catch (error) {
                 console.log("deck not found");
                 console.log(error);
-                history.push("/");
+                history.push("/decknotfound");
             }
         }
 
-        loadCards();
         loadDeck();
+        loadCards();
     }, [deckId, history])
 
     return (

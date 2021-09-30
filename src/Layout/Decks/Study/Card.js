@@ -11,8 +11,6 @@ function Card({ card, currentIndex, setCurrentIndex, setFinished, total }) {
         if (currentIndex < total - 1) {
             setCurrentIndex(currentIndex + 1);
         } else {
-            // todo: show prompt to either restart the cards or return to the home page
-            console.log("show the restart or return to the homepage modal");
             setFinished(true);
         }
     }

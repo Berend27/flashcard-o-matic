@@ -12,7 +12,7 @@ import DeckOverview from "./DeckOverview";
 import EditDeck from "./Decks/EditDeck";
 import Study from "./Decks/Study/Study";
 import { deleteDeck, listCards, listDecks } from "../utils/api";
-// todo: this doesn't handle sub 750 px screen widths well
+
 function Home() {
   const [decks, setDecks] = useState([]);
   const [dataUpdated, setDataUpdated] = useState([false]);
@@ -39,7 +39,11 @@ const refreshHome = () => history.go(0);
       const decksFromAPI = await listDecks();
       for (let deck of decksFromAPI) {
         const cards = await listCards(deck.id);
-        deck.count = cards.length;
+        if (deck.cards) {
+          deck.count = deck.cards.length
+        } else {
+          deck.count = cards.length;
+        }
       }
       setDecks(decksFromAPI);
     }
@@ -61,7 +65,7 @@ const refreshHome = () => history.go(0);
             </div>
             <ul style={listStyle}>
               {decks.map((deck, index) => (
-                <li key={index}><DeckOverview deck={deck} handleDelete={deleteDeckClicked}/></li>
+                <li key={index}><DeckOverview count={deck.count} deck={deck} handleDelete={deleteDeckClicked}/></li>
               ))}
             </ul>
           </Route>
