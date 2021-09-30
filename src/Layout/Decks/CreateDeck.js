@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { createDeck } from "../../utils/api";
 import { 
-    Link,
     useHistory, 
 } from "react-router-dom";
 import BreadcrumbBar from "../BreadcrumbBar";
@@ -25,8 +24,10 @@ function CreateDeck({ setDataUpdated }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        deck.id = Math.floor(Math.random() * 10000);
-        console.log(deck);
+        setDeck({
+            ...deck,
+            id: Math.floor(Math.random() * 10000)
+        })
         await createDeck(deck);
         setDataUpdated(true);
         history.push(`/decks/${deck.id}`);

@@ -1,7 +1,7 @@
 import React from "react";
 import ButterflyCard from "./ButterflyCard";
 
-function ButterflyCardList({cards, handleDeleteCard}) {
+function ButterflyCardList({cards, handleDeleteCard, handleEditCard}) {
     const listStyle = {
         listStyle: "none",
         paddingLeft: "0"
@@ -11,8 +11,8 @@ function ButterflyCardList({cards, handleDeleteCard}) {
         <div>
             <h2>Cards</h2>
             <ul style={listStyle}>
-                {cards.map((card, index) => (
-                    <li key={index}><ButterflyCard card={card} handleDeleteCard={handleDeleteCard} /></li>
+            {cards.map((card, index) => (
+                    <li key={index}><ButterflyCard card={card} handleDeleteCard={handleDeleteCard} handleEditCard={handleEditCard} /></li>
                 ))}
             </ul>
         </div>

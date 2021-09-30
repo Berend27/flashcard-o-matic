@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { 
-    Link,
     useHistory, 
     useParams, 
 } from "react-router-dom";
@@ -21,7 +20,6 @@ function EditDeck({ setDataUpdated }) {
         {text: deck.name, url: `/decks/${deck.id}`},
     ]
     const pageName = "Edit Deck";
-    const previous = `/decks/${deckId}`;
 
     const handleCancel = () => history.goBack();
 

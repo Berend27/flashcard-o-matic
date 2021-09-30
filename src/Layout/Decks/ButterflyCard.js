@@ -1,7 +1,6 @@
 import React from "react";
 // todo: Edit button functionality
-// todo: Delete button functionality
-function ButterflyCard({ card, handleDeleteCard }) {
+function ButterflyCard({ card, handleDeleteCard, handleEditCard }) {
 
     if (card) {
         return (
@@ -14,7 +13,15 @@ function ButterflyCard({ card, handleDeleteCard }) {
                         <p>{card.back}</p>
                         <br />
                         <div className="d-flex justify-content-end" style={{position: "absolute", right: "0px", bottom: "0px"}}>
-                            <button type="button" className="btn btn-secondary mr-2">Edit</button>
+                            <button 
+                                type="button" 
+                                className="btn btn-secondary mr-2" 
+                                onClick={(_) => {
+                                    handleEditCard(card);
+                                }}
+                            >
+                                Edit
+                            </button>
                             <button 
                                 type="button" 
                                 className="btn btn-danger" 

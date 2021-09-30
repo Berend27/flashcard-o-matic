@@ -11,12 +11,12 @@ function DeckOverview({ deck, handleDelete }) {
 
     return (
         <div className="row">
-            <div className="card col-5 m-3 pl-0 pr-0">
-                <div className="card-header d-flex justify-content-between">
+            <div className="card col-6 m-3 pl-0 pr-0">
+            <div className="card-body">
+                <div className="d-flex justify-content-between">
                     <h3>{deck.name}</h3>
                     <p>{deck.count} cards</p>
                 </div>
-            <div className="card-body">
                 <p>{deck.description}</p>
                 <div className="d-flex justify-content-between">
                     <div >

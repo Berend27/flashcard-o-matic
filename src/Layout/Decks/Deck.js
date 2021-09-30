@@ -10,6 +10,7 @@ import {
 import ButterflyCardList from "./ButterflyCardList";
 import AddCard from "./Cards/AddCard";
 import BreadcrumbBar from "../BreadcrumbBar";
+import EditCard from "./Cards/EditCard";
 
 function Deck({ deleteDeckClicked }) {
     const [cards, setCards] = useState([]);
@@ -31,6 +32,9 @@ function Deck({ deleteDeckClicked }) {
         } 
     }
     const handleEdit = () => history.push(`${url}/edit`);
+    const handleEditCard = (card) => {
+        history.push(`${url}/cards/${card.id}/edit`);
+    }
     const handleStudy = () => history.push(`${url}/study`)
 
     useEffect(() => {
@@ -58,6 +62,9 @@ function Deck({ deleteDeckClicked }) {
             <Route path="/decks/:deckId/cards/new">
                 <AddCard deck={deck} />
             </Route>
+            <Route path="/decks/:deckId/cards/:cardId/edit">
+                <EditCard deck={deck} />
+            </Route>
             <Route>
                 <BreadcrumbBar links={navLinks} currentPage={deck.name} />
                 <div className="mb-3">
@@ -83,7 +90,7 @@ function Deck({ deleteDeckClicked }) {
                         </button>
                     </div>
                 </div>
-                <ButterflyCardList cards={cards} handleDeleteCard={handleDeleteCard} />
+                <ButterflyCardList cards={cards} handleDeleteCard={handleDeleteCard} handleEditCard={handleEditCard}/>
             </Route>
         </Switch>
     )

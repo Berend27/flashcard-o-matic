@@ -42,7 +42,7 @@ function Study() {
                 history.push("/");
             }
         }
-    }, [finished]);
+    }, [finished, history]);
 
     const navLinks = [
         {text: "Home", url: "/"},

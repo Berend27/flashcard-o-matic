@@ -56,7 +56,7 @@
     },
     {
       "front": "entregar",
-      "back": "to deliver",
+      "back": "to deliver, to turn in",
       "deckId": 3151,
       "id": 38246
     },
@@ -77,6 +77,30 @@
       "back": "to program",
       "deckId": 3151,
       "id": 61625
+    },
+    {
+      "front": "hacer malabarismos",
+      "back": "to juggle",
+      "deckId": 3151,
+      "id": 16893
+    },
+    {
+      "front": "realizarse",
+      "back": "to come true, to be fulfilled",
+      "deckId": 3151,
+      "id": 47406
+    },
+    {
+      "front": "felicitar",
+      "back": "to congratulate",
+      "deckId": 3151,
+      "id": 61626
+    },
+    {
+      "front": "realizar",
+      "back": "to achieve",
+      "deckId": 3151,
+      "id": 61627
     }
   ]
 }
