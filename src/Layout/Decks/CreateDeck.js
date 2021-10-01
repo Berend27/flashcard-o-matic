@@ -24,10 +24,8 @@ function CreateDeck({ setDataUpdated }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setDeck({
-            ...deck,
-            id: Math.floor(Math.random() * 10000)
-        })
+        setDeck(deck)
+        // the api adds an id property to the deck
         await createDeck(deck);
         setDataUpdated(true);
         history.push(`/decks/${deck.id}`);

@@ -15,12 +15,13 @@ function AddCard({ deck }) {
     ]
     const PAGE_NAME = "Add Card";
 
-    const initialFormState = {
+    const initialCardState = {
         front: "",
         back: "",
+        deckId: deckId,
     }
 
-    const [card, setCard] = useState(initialFormState);
+    const [card, setCard] = useState(initialCardState);
 
     const handleDone = () => {
         history.push(`/decks/${deckId}`);
@@ -29,12 +30,9 @@ function AddCard({ deck }) {
 
     const handleSave = async (event) => {
         event.preventDefault();
-        setCard({
-            ...card,
-            deckId: deckId,
-            id: Math.floor(Math.random() * 100000)
-        })
+        setCard(card)
         await createCard(deckId, card);
+        // the api gave the card an id property
         history.go(0);
     }
 

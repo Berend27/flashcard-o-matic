@@ -101,6 +101,18 @@
       "back": "to achieve",
       "deckId": 3151,
       "id": 61627
+    },
+    {
+      "front": "caer",
+      "back": "to fall, to drop",
+      "deckId": 3151,
+      "id": 61628
+    },
+    {
+      "front": "saber",
+      "back": "to know",
+      "deckId": 3151,
+      "id": 61629
     }
   ]
 }
