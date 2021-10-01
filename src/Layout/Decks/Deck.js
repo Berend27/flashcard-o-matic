@@ -40,10 +40,8 @@ function Deck({ deleteDeckClicked }) {
     useEffect(() => {
         async function loadCards() {
             try {
-                console.log("cardsFromAPI")
                 const cardsFromAPI = await listCards(deckId);
                 setCards(cardsFromAPI);
-                console.log(cardsFromAPI);
             } catch (error) {
                 console.log(error);
             }

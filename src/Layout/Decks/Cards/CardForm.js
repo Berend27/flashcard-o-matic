@@ -13,7 +13,7 @@ function CardForm({ card, setCard, handleDone, handleSave }) {
     return (
         <form onSubmit={handleSave}>
             <div className="form-group">
-                <label htmlFor="front">Front</label> {/* todo: warning: for instead of htmlFor */}
+                <label htmlFor="front">Front</label>
                 <textarea
                     className="form-control"
                     id="front"

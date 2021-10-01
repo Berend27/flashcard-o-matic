@@ -23,7 +23,6 @@ function Study() {
     useEffect(() => {
         async function loadCards() {
             const cardsFromAPI = await listCards(deckId);
-            console.log(cardsFromAPI)
             setCards(cardsFromAPI);
         }
         async function loadDeck() {
