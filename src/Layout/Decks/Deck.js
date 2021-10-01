@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteCard, listCards, readDeck } from "../../utils/api";
+import { deleteCard, readDeck } from "../../utils/api";
 import { 
     Route,
     Switch,
@@ -13,8 +13,7 @@ import BreadcrumbBar from "../BreadcrumbBar";
 import EditCard from "./Cards/EditCard";
 
 function Deck({ deleteDeckClicked }) {
-    const [cards, setCards] = useState([]);
-    const [deck, setDeck] = useState({});
+    const [deck, setDeck] = useState({cards: []});
 
     const deckId = useParams().deckId;
     const history = useHistory();
@@ -38,28 +37,20 @@ function Deck({ deleteDeckClicked }) {
     const handleStudy = () => history.push(`${url}/study`)
 
     useEffect(() => {
-        async function loadCards() {
-            try {
-                const cardsFromAPI = await listCards(deckId);
-                setCards(cardsFromAPI);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        const abortController = new AbortController();
         async function loadDeck() {
             try {
-                const deckFromAPI = await readDeck(deckId);
+                const deckFromAPI = await readDeck(deckId, abortController.signal);
                 setDeck(deckFromAPI);
             } catch (error) {
-                console.log("deck not found");
                 console.log(error);
-                history.push("/decknotfound");
             }
         }
 
         loadDeck();
-        loadCards();
-    }, [deckId, history])
+
+        return () => abortController.abort();
+    }, [deckId])
 
     return (
         <Switch>
@@ -94,7 +85,7 @@ function Deck({ deleteDeckClicked }) {
                         </button>
                     </div>
                 </div>
-                <ButterflyCardList cards={cards} handleDeleteCard={handleDeleteCard} handleEditCard={handleEditCard}/>
+                <ButterflyCardList cards={deck.cards} handleDeleteCard={handleDeleteCard} handleEditCard={handleEditCard}/>
             </Route>
         </Switch>
     )

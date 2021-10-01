@@ -15,7 +15,6 @@ function Card({ card, currentIndex, setCurrentIndex, setFinished, total }) {
         }
     }
 
-    const nextButtonVisibility = showFront ? { visibility: "hidden" } : { visibility : "visible" };
     const visibleText = showFront ? card.front : card.back;
 
     return (
@@ -25,9 +24,9 @@ function Card({ card, currentIndex, setCurrentIndex, setFinished, total }) {
                     <h3>Card {currentIndex + 1} of {total}</h3>
                     <p>{visibleText}</p>
                     <button type="button" className="btn btn-secondary" onClick={flip}>Flip</button>
-                    <button type="button" className="btn btn-primary ml-2" style={nextButtonVisibility} onClick={showNextCard}>
+                    { !showFront && <button type="button" className="btn btn-primary ml-2" onClick={showNextCard}>
                         Next
-                    </button>
+                    </button> }
                 </div>
             </div>
         </div>
