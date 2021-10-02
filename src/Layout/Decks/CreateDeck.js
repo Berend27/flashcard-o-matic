@@ -25,10 +25,15 @@ function CreateDeck({ updateTrigger, setUpdateTrigger }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setDeck(deck)
-        // the api adds an id property to the deck
-        await createDeck(deck);
-        setUpdateTrigger(!updateTrigger);
-        history.push(`/decks/${deck.id}`);
+        try {
+            // the api adds an id property to the deck
+            const deckWithId = await createDeck(deck);
+            setUpdateTrigger(!updateTrigger);
+            history.push(`/decks/${deckWithId.id}`);
+        } catch (error) {
+            console.log(error);
+            history.go(0);
+        }
     }
 
     return (

@@ -14,6 +14,11 @@
       "name": "Verbos",
       "description": "Verbos en español.",
       "id": 3151
+    },
+    {
+      "name": "Adjetivos",
+      "description": "Adjectives in Spanish",
+      "id": 3152
     }
   ],
   "cards": [
@@ -131,6 +136,24 @@
       "back": "to be absent from",
       "deckId": 3151,
       "id": 61633
+    },
+    {
+      "front": "fascinado",
+      "back": "fascinated",
+      "deckId": 3152,
+      "id": 61634
+    },
+    {
+      "front": "asombrado",
+      "back": "amazed",
+      "deckId": 3152,
+      "id": 61635
+    },
+    {
+      "front": "contento",
+      "back": "happy",
+      "deckId": 3152,
+      "id": 61636
     }
   ]
 }
