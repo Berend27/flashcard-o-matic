@@ -23,16 +23,20 @@ function EditCard({ deck }) {
 
     const handleSave = async (event) => {
         event.preventDefault();
-        updateCard(card);
+        await updateCard(card);
         history.go(0);
     }
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         async function loadCard() {
-            const cardFromAPI = await readCard(cardId)
+            const cardFromAPI = await readCard(cardId, abortController.signal)
             setCard(cardFromAPI);
         }
         loadCard();
+
+        return () => abortController.abort();
     }, [cardId]) 
 
     return (

@@ -10,7 +10,7 @@ import {
 import BreadcrumbBar from "../BreadcrumbBar";
 import DeckForm from "./DeckForm";
 
-function EditDeck({ setDataUpdated }) {
+function EditDeck({ updateTrigger, setUpdateTrigger }) {
     const [deck, setDeck] = useState({});
 
     const deckId = useParams().deckId;
@@ -26,11 +26,9 @@ function EditDeck({ setDataUpdated }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await updateDeck(deck);
-        setDataUpdated(true);
+        setUpdateTrigger(!updateTrigger);
         history.goBack();
     }
-
-    setDataUpdated(false);
 
     useEffect(() => {
         async function loadDeck() {
@@ -38,8 +36,11 @@ function EditDeck({ setDataUpdated }) {
             setDeck(deckFromAPI);
         }
         loadDeck();
+
     }, [deckId])
 
+    console.log(deckId);
+    console.log(deck);
     return (
         <div>
             <BreadcrumbBar links={navLinks} currentPage={pageName} />

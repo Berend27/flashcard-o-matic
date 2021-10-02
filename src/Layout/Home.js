@@ -15,7 +15,7 @@ import { deleteDeck, listCards, listDecks } from "../utils/api";
 
 function Home() {
   const [decks, setDecks] = useState([]);
-  const [dataUpdated, setDataUpdated] = useState([false]);
+  const [updateTrigger, setUpdateTrigger] = useState([false]);
 
   const history = useHistory();
 
@@ -35,10 +35,12 @@ function Home() {
 const refreshHome = () => history.go(0);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     async function loadDecks() {
-      const decksFromAPI = await listDecks();
+      const decksFromAPI = await listDecks(abortController.signal);
       for (let deck of decksFromAPI) {
-        const cards = await listCards(deck.id);
+        const cards = await listCards(deck.id, abortController.signal);
         if (deck.cards) {
           deck.count = deck.cards.length
         } else {
@@ -48,7 +50,7 @@ const refreshHome = () => history.go(0);
       setDecks(decksFromAPI);
     }
     loadDecks();
-  }, [dataUpdated])
+  }, [updateTrigger])
 
   return (
     <div>
@@ -70,10 +72,10 @@ const refreshHome = () => history.go(0);
             </ul>
           </Route>
           <Route path = "/decks/new">
-            <CreateDeck setDataUpdated={setDataUpdated} />
+            <CreateDeck updateTrigger={updateTrigger} setUpdateTrigger={setUpdateTrigger} />
           </Route>
           <Route path = "/decks/:deckId/edit">
-            <EditDeck setDataUpdated={setDataUpdated} />
+            <EditDeck updateTrigger={updateTrigger} setUpdateTrigger={setUpdateTrigger} />
           </Route>
           <Route path = "/decks/:deckId/study">
             <Study />

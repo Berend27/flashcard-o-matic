@@ -6,7 +6,7 @@ import {
 import BreadcrumbBar from "../BreadcrumbBar";
 import DeckForm from "./DeckForm";
 
-function CreateDeck({ setDataUpdated }) {
+function CreateDeck({ updateTrigger, setUpdateTrigger }) {
     const initialFormState = {
         name: "",
         description: "",
@@ -27,11 +27,9 @@ function CreateDeck({ setDataUpdated }) {
         setDeck(deck)
         // the api adds an id property to the deck
         await createDeck(deck);
-        setDataUpdated(true);
+        setUpdateTrigger(!updateTrigger);
         history.push(`/decks/${deck.id}`);
     }
-
-    setDataUpdated(false);
 
     return (
         <div>

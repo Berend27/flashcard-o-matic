@@ -29,11 +29,13 @@ function AddCard({ deck }) {
     }
 
     const handleSave = async (event) => {
+        const abortController = new AbortController();
         event.preventDefault();
         setCard(card)
-        await createCard(deckId, card);
+        await createCard(deckId, card, abortController.signal);
         // the api gave the card an id property
         history.go(0);
+        return abortController.abort();
     }
 
     return (
