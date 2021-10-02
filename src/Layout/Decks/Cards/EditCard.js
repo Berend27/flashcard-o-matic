@@ -4,7 +4,7 @@ import { readCard, updateCard } from "../../../utils/api";
 import BreadcrumbBar from "../../BreadcrumbBar";
 import CardForm from "./CardForm";
 
-function EditCard({ deck }) {
+function EditCard({ deck, updateTrigger, setUpdateTrigger }) {
     const cardId = useParams().cardId;
     const history = useHistory();
 
@@ -18,13 +18,13 @@ function EditCard({ deck }) {
 
     const handleDone = () => {
         history.push(`/decks/${deck.id}`);
-        history.go(0);
     }
 
     const handleSave = async (event) => {
         event.preventDefault();
         await updateCard(card);
-        history.go(0);
+        setUpdateTrigger(!updateTrigger);
+        document.getElementById('save').blur();
     }
 
     useEffect(() => {

@@ -81,7 +81,7 @@ const refreshHome = () => history.go(0);
             <Study />
           </Route>
           <Route path = "/decks/:deckId">
-            <Deck deleteDeckClicked={deleteDeckClicked} />
+            <Deck deleteDeckClicked={deleteDeckClicked} updateTrigger={updateTrigger} setUpdateTrigger={setUpdateTrigger} />
           </Route>
           <Route>
             <NotFound />

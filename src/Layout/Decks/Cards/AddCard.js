@@ -6,7 +6,7 @@ import { createCard } from "../../../utils/api";
 import BreadcrumbBar from "../../BreadcrumbBar";
 import CardForm from "./CardForm";
 
-function AddCard({ deck }) {
+function AddCard({ deck, updateTrigger, setUpdateTrigger }) {
     const deckId = deck.id 
     const history = useHistory();
     const navLinks = [
@@ -25,7 +25,6 @@ function AddCard({ deck }) {
 
     const handleDone = () => {
         history.push(`/decks/${deckId}`);
-        history.go(0);
     }
 
     const handleSave = async (event) => {
@@ -34,7 +33,9 @@ function AddCard({ deck }) {
         setCard(card)
         await createCard(deckId, card, abortController.signal);
         // the api gave the card an id property
-        history.go(0);
+        setUpdateTrigger(!updateTrigger);
+        document.getElementById('save').blur();
+        setCard(initialCardState);
         return abortController.abort();
     }
 

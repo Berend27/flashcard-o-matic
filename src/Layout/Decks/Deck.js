@@ -12,7 +12,7 @@ import AddCard from "./Cards/AddCard";
 import BreadcrumbBar from "../BreadcrumbBar";
 import EditCard from "./Cards/EditCard";
 
-function Deck({ deleteDeckClicked }) {
+function Deck({ deleteDeckClicked, updateTrigger, setUpdateTrigger }) {
     const [deck, setDeck] = useState({cards: []});
 
     const deckId = useParams().deckId;
@@ -27,7 +27,7 @@ function Deck({ deleteDeckClicked }) {
     const handleDeleteCard = async (card) => {
         if (window.confirm("Delete this card?")) {
             await deleteCard(card.id);
-            history.go(0);
+            setUpdateTrigger(!updateTrigger);
         } 
     }
     const handleEdit = () => history.push(`${url}/edit`);
@@ -50,15 +50,15 @@ function Deck({ deleteDeckClicked }) {
         loadDeck();
 
         return () => abortController.abort();
-    }, [deckId])
+    }, [deckId, updateTrigger])
 
     return (
         <Switch>
             <Route path="/decks/:deckId/cards/new">
-                <AddCard deck={deck} />
+                <AddCard deck={deck} updateTrigger={updateTrigger} setUpdateTrigger={setUpdateTrigger} />
             </Route>
             <Route path="/decks/:deckId/cards/:cardId/edit">
-                <EditCard deck={deck} />
+                <EditCard deck={deck} updateTrigger={updateTrigger} setUpdateTrigger={setUpdateTrigger} />
             </Route>
             <Route>
                 <BreadcrumbBar links={navLinks} currentPage={deck.name} />

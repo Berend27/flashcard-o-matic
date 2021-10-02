@@ -61,12 +61,6 @@
       "id": 38246
     },
     {
-      "front": "traer",
-      "back": "to bring",
-      "deckId": 3151,
-      "id": 36918
-    },
-    {
       "front": "enrollar",
       "back": "to roll",
       "deckId": 3151,
@@ -74,7 +68,7 @@
     },
     {
       "front": "programar",
-      "back": "to program",
+      "back": "to program, to schedule",
       "deckId": 3151,
       "id": 61625
     },
@@ -109,10 +103,34 @@
       "id": 61628
     },
     {
-      "front": "saber",
-      "back": "to know",
+      "front": "brincar",
+      "back": "to jump, to hop",
       "deckId": 3151,
       "id": 61629
+    },
+    {
+      "front": "saltar",
+      "back": "to jump",
+      "deckId": 3151,
+      "id": 61630
+    },
+    {
+      "front": "hornear",
+      "back": "to bake",
+      "deckId": 3151,
+      "id": 61631
+    },
+    {
+      "front": "jalar",
+      "back": "to pull, to tug",
+      "deckId": 3151,
+      "id": 61632
+    },
+    {
+      "front": "faltar a",
+      "back": "to be absent from",
+      "deckId": 3151,
+      "id": 61633
     }
   ]
 }
