@@ -154,6 +154,12 @@
       "back": "happy",
       "deckId": 3152,
       "id": 61636
+    },
+    {
+      "front": "enojado",
+      "back": "angry",
+      "deckId": 3152,
+      "id": 61637
     }
   ]
 }

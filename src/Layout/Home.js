@@ -23,7 +23,7 @@ function Home() {
   const deleteDeckClicked = async (id) => {
     if (window.confirm("Delete this deck?\nYou will not be able to recover it.")) {
       await deleteDeck(id);
-      refreshHome();
+      setUpdateTrigger(!updateTrigger);
     }
   }
 
@@ -31,8 +31,6 @@ function Home() {
     listStyle: "none",
     paddingLeft: "0"
 }
-
-const refreshHome = () => history.go(0);
 
   useEffect(() => {
     const abortController = new AbortController();

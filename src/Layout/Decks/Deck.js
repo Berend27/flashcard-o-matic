@@ -79,6 +79,7 @@ function Deck({ deleteDeckClicked, updateTrigger, setUpdateTrigger }) {
                             onClick={(event) => {
                                     deleteDeckClicked(deckId);
                                     event.currentTarget.blur();
+                                    history.push("/");
                                 }
                             }>
                                 <i className="far fa-trash-alt"></i>
