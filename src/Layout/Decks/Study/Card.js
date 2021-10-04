@@ -23,7 +23,14 @@ function Card({ card, currentIndex, setCurrentIndex, setFinished, total }) {
                 <div className="card-body">
                     <h3>Card {currentIndex + 1} of {total}</h3>
                     <p>{visibleText}</p>
-                    <button type="button" className="btn btn-secondary" onClick={flip}>Flip</button>
+                    <button 
+                        type="button" 
+                        className="btn btn-secondary" 
+                        onClick={(event) => { 
+                            flip();  
+                            event.target.blur();
+                        }
+                    }>Flip</button>
                     { !showFront && <button type="button" className="btn btn-primary ml-2" onClick={showNextCard}>
                         Next
                     </button> }
