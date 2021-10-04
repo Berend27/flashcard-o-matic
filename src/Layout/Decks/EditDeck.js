@@ -39,8 +39,6 @@ function EditDeck({ updateTrigger, setUpdateTrigger }) {
 
     }, [deckId])
 
-    console.log(deckId);
-    console.log(deck);
     return (
         <div>
             <BreadcrumbBar links={navLinks} currentPage={pageName} />
