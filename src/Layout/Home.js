@@ -11,7 +11,7 @@ import Deck from "./Decks/Deck";
 import DeckOverview from "./DeckOverview";
 import EditDeck from "./Decks/EditDeck";
 import Study from "./Decks/Study/Study";
-import { deleteDeck, listCards, listDecks } from "../utils/api";
+import { deleteDeck, listDecks } from "../utils/api";
 
 function Home() {
   const [decks, setDecks] = useState([]);
@@ -38,16 +38,13 @@ function Home() {
     async function loadDecks() {
       const decksFromAPI = await listDecks(abortController.signal);
       for (let deck of decksFromAPI) {
-        const cards = await listCards(deck.id, abortController.signal);
-        if (deck.cards) {
-          deck.count = deck.cards.length
-        } else {
-          deck.count = cards.length;
-        }
+        deck.count = deck.cards ? deck.cards.length : 0;
       }
       setDecks(decksFromAPI);
     }
     loadDecks();
+
+    return () => abortController.abort();
   }, [updateTrigger])
 
   return (

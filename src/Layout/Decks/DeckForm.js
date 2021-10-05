@@ -21,7 +21,7 @@ function DeckForm({ deck, setDeck, handleCancel, handleSubmit}) {
                     onChange={handleChange}
                     placeholder="Deck Name"
                     required
-                    value={deck.name}
+                    defaultValue={deck.name}
                 />
             </div>
             <div className="form-group">
