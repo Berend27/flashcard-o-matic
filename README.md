@@ -26,6 +26,13 @@ Edit Deck
 Create Deck
 <img width="984" alt="FlashcardsPic6CreateDeck" src="https://user-images.githubusercontent.com/42151098/135907731-35ac39e2-6657-4bd2-80ab-6025bbbfff95.png">
 
+## Back End
+#### Back End Deployment
+[https://flashcard-back-end-djb.herokuapp.com](https://flashcard-back-end-djb.herokuapp.com/)
+
+#### Back End GitHub Repository
+[https://github.com/Berend27/flashcard-back-end](https://github.com/Berend27/flashcard-back-end)
+
 ## Technologies
 - HTML
 - CSS
