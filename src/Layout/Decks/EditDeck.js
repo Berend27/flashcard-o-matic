@@ -25,6 +25,7 @@ function EditDeck({ updateTrigger, setUpdateTrigger }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        delete deck.cards;
         await updateDeck(deck);
         setUpdateTrigger(!updateTrigger);
         history.goBack();

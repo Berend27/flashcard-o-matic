@@ -36,8 +36,7 @@ function Home() {
     const abortController = new AbortController();
 
     async function loadDecks() {
-      const response = await listDecks(abortController.signal);
-      const decksFromAPI = response;
+      const decksFromAPI = await listDecks(abortController.signal);
       for (let deck of decksFromAPI) {
         deck.count = deck.cards ? deck.cards.length : 0;
       }

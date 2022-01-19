@@ -1,5 +1,0 @@
-{
-  "port": 5001,
-  "watch": true,
-  "static": "./docs/api"
-}

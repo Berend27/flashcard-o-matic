@@ -2,7 +2,7 @@
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:6000";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -87,10 +87,11 @@ export async function listDecks(signal) {
  */
 export async function createDeck(deck, signal) {
   const url = `${API_BASE_URL}/decks`;
+  const postBody = { "data": deck }
   const options = {
     method: "POST",
     headers,
-    body: JSON.stringify(stripCards(deck)),
+    body: JSON.stringify(stripCards(postBody)),
     signal,
   };
   return await fetchJson(url, options, {});
@@ -121,10 +122,11 @@ export async function readDeck(deckId, signal) {
  */
 export async function updateDeck(updatedDeck, signal) {
   const url = `${API_BASE_URL}/decks/${updatedDeck.id}?_embed=cards`;
+  const putBody = { "data": updatedDeck };
   const options = {
     method: "PUT",
     headers,
-    body: JSON.stringify(stripCards(updatedDeck)),
+    body: JSON.stringify(stripCards(putBody)),
     signal,
   };
   return await fetchJson(url, options, updatedDeck);
@@ -176,10 +178,11 @@ export async function createCard(deckId, card, signal) {
   // and the card is not related to the deck because the data types of the ID's are different.
   const url = `${API_BASE_URL}/cards`;
   card.deckId = Number(deckId);
+  const postBody = { "data": card };
   const options = {
     method: "POST",
     headers,
-    body: JSON.stringify(card),
+    body: JSON.stringify(postBody),
     signal,
   };
   return await fetchJson(url, options, card);
@@ -210,10 +213,11 @@ export async function readCard(cardId, signal) {
  */
 export async function updateCard(updatedCard, signal) {
   const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
+  const putBody = { "data": updatedCard };
   const options = {
     method: "PUT",
     headers,
-    body: JSON.stringify(updatedCard),
+    body: JSON.stringify(putBody),
   };
   return await fetchJson(url, options, updatedCard);
 }
